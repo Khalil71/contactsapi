@@ -36,7 +36,7 @@ module.exports.routes = {
   //for getting the contact list using the post method
   'POST /contacts/getList': 'ContactsController.fundUserContacts',
   //for getting the recent contacts using the post method
-  'POST /getRecentList': 'ContactsController.recentContacts'
+  'POST /contacts/getRecentList': 'ContactsController.recentContacts'
 
   /***************************************************************************
   *                                                                          *
