@@ -56,7 +56,7 @@ module.exports = {
     		if(err) return next(err);
 				//Picking the latest five collections from the collections array using the slice method
 				var recentFive = conts.slice(0, 5)
-				//returns the contacts to the client orded ascendingly by according to date and time
+				//returns the last 5 contacts orded ascendingly by according to date and time and the status code200(ok) and the success message
 				x = {stautsCode: 200, message:'Successful process', data:recentFive};
 				return res.json([200], x);
     	});
