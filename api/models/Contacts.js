@@ -28,18 +28,20 @@ module.exports = {
     },
     mobile:{
       type:'string',
-      required: true,
-      minLength: 8,
-      maxLength: 9
+      //(default): if the user does not enter the data required for this field it will shou null
+      defaultsTo: 'null'
     },
     relationId:{
-      type: 'null'
+      type: 'string',
+      defaultsTo: 'null'
     },
     accountId:{
-      type: 'null'
+      type: 'string',
+      defaultsTo: 'null'
     },
     userId:{
-      type: 'null'
+      type: 'string',
+      defaultsTo: 'null'
     }
   }
 };
