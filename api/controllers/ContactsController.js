@@ -16,8 +16,10 @@ module.exports = {
 			Contacts.create(req.params.all(), function conatctCreated(err, conts){
 				//if the collection was not created in the DB the err is sent to the client informing them with the error
 				if(err) return next(err);
+				//adding the status code 200(ok), the success message and the collection to the response
+				x = {stautsCode: 200, message:'Successful process', data:conts};
 				//if succesful the collection will be sent back to the client in json format with a 200(ok) status code
-				return res.json([200], conts);
+				return res.json([200], x);
 			});
 			//if any of the authorization, deviceToken and fingerPrint are incorrect or missing 404(not found) status code will be sent with the message to the client
 		}else{
@@ -33,8 +35,9 @@ module.exports = {
 				//using .exec because find() will not work unless followed by .exec
 				if(err) return next(err);
 
+				x = {stautsCode: 200, message:'Successful process', data:conts};
 				//will return all the contacts with a status code of 200(ok)
-				return res.json([200], conts);
+				return res.json([200], x);
 			});
 		}else{
 			res.send([404], 'Please Check your keys');
@@ -51,8 +54,11 @@ module.exports = {
 			//just like the find() method the sort() method wont return the contacts...simple function takes 2 parameters the error and the result if succesful
 			myQuery.exec(function sorting(err, conts){
     		if(err) return next(err);
+				//Picking the latest five collections from the collections array using the slice method
+				var recentFive = conts.slice(0, 5)
 				//returns the contacts to the client orded ascendingly by according to date and time
-				return res.json([200], conts);
+				x = {stautsCode: 200, message:'Successful process', data:recentFive};
+				return res.json([200], x);
     	});
 	} else {
 		res.send([404], 'Please Check your keys');
